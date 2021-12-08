@@ -5,7 +5,6 @@
 $ npm i -S nestjs-error-handler
 ```
 
-
 ## Usage
 
  - Add your timezone on .env
@@ -45,12 +44,13 @@ $ npm i -S nestjs-error-handler
 ```js
 //  main.ts
 import { AppExceptionFilter, ExceptionInterceptor } from 'nestjs-error-handler';
+import { Logger } from '@nestjs/common';
 import * as htttpStatus from './htttp-status.json';
 
 async function bootstrap() {
  const app = await NestFactory.create(MainModule);
 
- app.useGlobalFilters(new AppExceptionFilter(loggerService, htttpStatus, process.env.TZ));
+ app.useGlobalFilters(new AppExceptionFilter(new Logger(), htttpStatus, process.env.TZ));
  app.useGlobalInterceptors(new ExceptionInterceptor());
   ...
 }
