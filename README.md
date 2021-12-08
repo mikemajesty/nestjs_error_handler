@@ -15,7 +15,7 @@ $ npm i -S nestjs-error-handler
   ```
    - Create a JSON file that represent the error that was visible in the client, the original error will be only on console
   ```json
-   -- htttp-status.json
+   <!-- htttp-status.json -->
    {
       "ECONNREFUSED": "Connection Refused",
       "400": "Bad Request",
@@ -43,7 +43,7 @@ $ npm i -S nestjs-error-handler
    
    - Add on main.ts file
 ```js
--- main.ts
+//  main.ts
 import { AppExceptionFilter, ExceptionInterceptor } from 'nestjs-error-handler';
 import * as htttpStatus from './htttp-status.json';
 
@@ -57,7 +57,7 @@ async function bootstrap() {
 ```
 
   - Custom error
-  ```
+  ```js
     import { ApiException } from 'nestjs-error-handler';
   
     @Controller()
